@@ -45,6 +45,27 @@
             }
         }
 
+        public function readNome($nomeBusca)
+        {
+            try
+            {
+                $sql = "SELECT * FROM usuario LIKE nome = '%:nomeBusca'";
+                $result = Conexao::getConexao()->query($sql);
+                $lista = $result->fetchAll(PDO::FETCH_ASSOC);
+                $f_lista = array();
+                foreach($lista as $l)
+                {
+                    $f_lista[] = $this->listaUsuarios($l);
+                }
+                return $f_lista;
+                header('Location: ../../');
+            }
+            catch(Exception $e)
+            {
+                print 'Ocorreu um erro ao tentar buscar todos' . $e;
+            }
+        }
+
         public function update(Usuario $usuario)
         {
             try

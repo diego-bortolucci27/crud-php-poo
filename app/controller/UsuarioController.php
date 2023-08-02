@@ -8,6 +8,9 @@
     $usuario = new Usuario();
     $usuariodao = new UsuarioDao();
 
+    $busca = $_POST['nomeBusca'];
+    $usuariodao->readNome($busca);
+
     //Pega todos os dados passados por POST
 
     //$d = filter_input_array(INPUT_POST);
